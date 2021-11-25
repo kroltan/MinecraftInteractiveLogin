@@ -9,4 +9,4 @@ depend:
 commands:
   interactive-login:
     description: Used automatically by chat links
-    usage: /interactive-login register|login <WHERE>
+    usage: /interactive-login select <WHERE>
