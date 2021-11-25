@@ -133,8 +133,8 @@ class InteractiveLoginPlugin : JavaPlugin(), Listener {
 
         step.recurse {
             when (val result = run(this@InteractiveLoginPlugin, event.player)) {
-                is JoinStep.Result.Done -> Recursion.Done(result)
-                is JoinStep.Result.Step -> Recursion.Next(result.step)
+                is JoinStep.Result.Done -> null
+                is JoinStep.Result.Step -> result.step
             }
         }
     }

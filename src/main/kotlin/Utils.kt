@@ -56,15 +56,11 @@ suspend fun <T> ConfigurationSection.withTimeout(key: String, body: suspend Coro
 fun <T, I> T.chaining(items: Iterable<I>, block: T.(I) -> T): T =
     items.fold(this) { t, x -> t.block(x) }
 
-sealed class Recursion<T, R> {
-    data class Next<T, R>(val value: T) : Recursion<T, R>()
-    data class Done<T, R>(val result: R) : Recursion<T, R>()
-}
 
-suspend fun <T, R> T.recurse(block: suspend T.() -> Recursion<T, R>): R {
+suspend fun <T> T.recurse(block: suspend T.() -> T?): T {
     return when (val next = this.block()) {
-        is Recursion.Next -> next.value.recurse(block)
-        is Recursion.Done -> next.result
+        null -> this
+        else -> next.recurse(block)
     }
 }
 
