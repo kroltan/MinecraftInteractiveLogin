@@ -1,0 +1,12 @@
+name: InteractiveLogin
+version: '${VERSION}'
+author: kroltan
+main: me.kroltan.interactivelogin.InteractiveLoginPlugin
+api-version: 1.17
+depend:
+  - Kotlin
+  - AuthMe
+commands:
+  interactive-login:
+    description: Used automatically by chat links
+    usage: /interactive-login register|login <WHERE>

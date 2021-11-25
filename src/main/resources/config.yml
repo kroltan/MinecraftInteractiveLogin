@@ -1,0 +1,25 @@
+methods:
+  "Discord":
+    class: me.kroltan.interactivelogin.DiscordAuthorizationMethod
+    token:
+    guild:
+    roles: []
+    texts:
+      login-message: "Login attempt on $[guild.name] by $[player]"
+      login-confirmation-message: "$[player] was authorized on $[guild.name]."
+      login-authorize-button: "Authorize"
+      registration-instructions: "Send a message to $[bot.name] with the code below:"
+      registration-confirmation: "Registration successful."
+policy:
+  no-methods: kick # one of: kick, stay
+  authorization-timeout: 20
+  registration-timeout: 60
+texts:
+  no-methods-kick: "There is no available registration method"
+  login-aborted-kick: "Not registered"
+  registration-options-prefix: "How do you want to register?"
+  login-options-prefix: "How do you want to login?"
+  choice-instructions: "(Click the on option you want)"
+  unauthorized: "Authorization via $[method] failed"
+  error-message: "An error ocurred, please contact server adminstrators."
+  copy-to-clipboard: "Click to copy"
